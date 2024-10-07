@@ -8,40 +8,12 @@ public partial class FourBandResistor : TabPage
 	private Color color1 = Color.Black;
 	private Color color2 = Color.Black;
 	private Color color3 = Color.Black;
-	private Color color4 = Color.Brown;
+	private Color color4 = Color.Gold;
 	private int a, b;
 	
 	public FourBandResistor()
 	{
 		InitializeComponent();
-	}
-	
-	private double ResiztorCalc(int a, int b)
-	{
-		return a * Math.Pow(10, b);
-	}
-	
-	private string GetSembol(double ohm)
-	{
-		if (ohm >= 1000000000)
-        {
-            double gOhm = ohm / 1000000000.0;
-            return $"{gOhm}GΩ";
-        }
-		else if(ohm >= 1000000)
-		{
-			double mohm = ohm / 1000000.0;
-			return $"{mohm}MΩ";
-		}
-		else if(ohm >= 1000)
-		{
-			double kohm = ohm / 1000.0;
-			return $"{kohm}KΩ";
-		}
-		else
-		{
-			return $"{ohm}Ω";
-		}
 	}
 	
 	/** Events **/
@@ -66,7 +38,7 @@ public partial class FourBandResistor : TabPage
         g.DrawString(item4.getTolerans(), font, Brushes.Black, 205, 30);
         
         g.DrawString("4 Band", new Font("Arial", 12), Brushes.Black, 3, 60);
-        g.DrawString(GetSembol(ResiztorCalc(a, b)) + "  " + item4.getTolerans(), new Font("Arial", 12), Brushes.Black, 245, 60);
+        g.DrawString(Utils.GetSembol(Utils.ResiztorCalc(a, b)) + "  " + item4.getTolerans(), new Font("Arial", 12), Brushes.Black, 245, 60);
 	}
 	
 	private void OnSelectedIndexChanged(object sender, EventArgs e)
@@ -84,14 +56,14 @@ public partial class FourBandResistor : TabPage
 		a = int.Parse(item1.getMultiplier().ToString() + item2.getMultiplier().ToString());
 		b = item3.getMultiplier();
 		
-		txt1.Text = Convert.ToString(ResiztorCalc(a, 9));
-		txt2.Text = Convert.ToString(ResiztorCalc(a, 6));
-		txt3.Text = Convert.ToString(ResiztorCalc(a, 3));
-		txt4.Text = Convert.ToString(ResiztorCalc(a, 0));
-		txt5.Text = Convert.ToString(ResiztorCalc(a, -3));
-		txt6.Text = Convert.ToString(ResiztorCalc(a, -6));
-		txt7.Text = Convert.ToString(ResiztorCalc(a, -9));
-		txt8.Text = Convert.ToString(ResiztorCalc(a, -12));
+		txt1.Text = Convert.ToString(Utils.ResiztorCalc(a, 9));
+		txt2.Text = Convert.ToString(Utils.ResiztorCalc(a, 6));
+		txt3.Text = Convert.ToString(Utils.ResiztorCalc(a, 3));
+		txt4.Text = Convert.ToString(Utils.ResiztorCalc(a, 0));
+		txt5.Text = Convert.ToString(Utils.ResiztorCalc(a, -3));
+		txt6.Text = Convert.ToString(Utils.ResiztorCalc(a, -6));
+		txt7.Text = Convert.ToString(Utils.ResiztorCalc(a, -9));
+		txt8.Text = Convert.ToString(Utils.ResiztorCalc(a, -12));
 		txt9.Text = item4.getTolerans();
 		
 		this.img.Invalidate();

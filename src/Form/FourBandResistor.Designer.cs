@@ -116,7 +116,7 @@ partial class FourBandResistor
 		cmb4.DropDownStyle = ComboBoxStyle.DropDownList;
 		for(int i = 0; i < tolerans.Length; i++)
 			cmb4.Items.Add(tolerans[i]);
-		cmb4.SelectedIndex = 0;
+		cmb4.SelectedIndex = 6;
 		cmb4.SelectedIndexChanged += new EventHandler(OnSelectedIndexChanged);
 		
 		lytPnlColor.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left) | AnchorStyles.Right);
