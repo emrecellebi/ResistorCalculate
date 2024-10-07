@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-public partial class ResistorCalculate : Form
+public partial class FourBandResistor : TabPage
 {
 	private Color color1 = Color.Black;
 	private Color color2 = Color.Black;
@@ -11,7 +11,7 @@ public partial class ResistorCalculate : Form
 	private Color color4 = Color.Brown;
 	private int a, b;
 	
-	public ResistorCalculate()
+	public FourBandResistor()
 	{
 		InitializeComponent();
 	}
@@ -49,10 +49,10 @@ public partial class ResistorCalculate : Form
 	{
 		Graphics g = e.Graphics;
 
-        g.FillRectangle(new SolidBrush(color1), new Rectangle(100, 53, 12, 66)); // 1. Bant
-        g.FillRectangle(new SolidBrush(color2), new Rectangle(130, 58, 12, 55)); // 2. Bant
-        g.FillRectangle(new SolidBrush(color3), new Rectangle(160, 58, 12, 55)); // 3. Bant (Multiplier)
-        g.FillRectangle(new SolidBrush(color4), new Rectangle(205, 53, 12, 66)); // 4. Bant (Tolerans)
+        g.FillRectangle(new SolidBrush(color1), new Rectangle(100, 53, 11, 66)); // 1. Bant
+        g.FillRectangle(new SolidBrush(color2), new Rectangle(130, 58, 11, 55)); // 2. Bant
+        g.FillRectangle(new SolidBrush(color3), new Rectangle(154, 58, 11, 55)); // 3. Bant (Multiplier)
+        g.FillRectangle(new SolidBrush(color4), new Rectangle(208, 53, 11, 66)); // 4. Bant (Tolerans)
 		
 		Item item1 = (Item)cmb1.SelectedItem;
 		Item item2 = (Item)cmb2.SelectedItem;
@@ -60,9 +60,9 @@ public partial class ResistorCalculate : Form
 		Item item4 = (Item)cmb4.SelectedItem;
 		
         Font font = new Font("Arial", 12);
-        g.DrawString(item1.getMultiplier().ToString(), font, Brushes.Black, 100, 30);
-        g.DrawString(item2.getMultiplier().ToString(), font, Brushes.Black, 130, 30);
-        g.DrawString("10^" + item3.getMultiplier().ToString(), font, Brushes.Black, 150, 30);
+        g.DrawString(item1.getMultiplier().ToString(), font, Brushes.Black, 99, 30);
+        g.DrawString(item2.getMultiplier().ToString(), font, Brushes.Black, 129, 30);
+        g.DrawString(item3.getMultiplier().ToString(), font, Brushes.Black, 154, 30);
         g.DrawString(item4.getTolerans(), font, Brushes.Black, 205, 30);
         
         g.DrawString("4 Band", new Font("Arial", 12), Brushes.Black, 3, 60);

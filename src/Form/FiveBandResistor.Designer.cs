@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-partial class ResistorCalculate
+partial class FiveBandResistor
 {
 	private IContainer components = null;
 	private PictureBox img = new PictureBox();
@@ -15,6 +15,7 @@ partial class ResistorCalculate
 	private ComboBox cmb2 = new ComboBox();
 	private ComboBox cmb3 = new ComboBox();
 	private ComboBox cmb4 = new ComboBox();
+	private ComboBox cmb5 = new ComboBox();
 	private Label lbl1 = new Label();
 	private Label lbl2 = new Label();
 	private Label lbl3 = new Label();
@@ -28,6 +29,7 @@ partial class ResistorCalculate
 	private Label lbl11 = new Label();
 	private Label lbl12 = new Label();
 	private Label lbl13 = new Label();
+	private Label lbl14 = new Label();
 	private TextBox txt1 = new TextBox();
 	private TextBox txt2 = new TextBox();
 	private TextBox txt3 = new TextBox();
@@ -78,12 +80,16 @@ partial class ResistorCalculate
 		lbl2.Text = "2. Bant";
 		lbl2.Font = new Font("Arial", 12);
 		
+		lbl14.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
+		lbl14.Text = "3. Bant";
+		lbl14.Font = new Font("Arial", 12);
+		
 		lbl3.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
-		lbl3.Text = "3. Bant (Çarpan)";
+		lbl3.Text = "4. Bant (Çarpan)";
 		lbl3.Font = new Font("Arial", 12);
 		
 		lbl4.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
-		lbl4.Text = "4. Bant (Tolerans)";
+		lbl4.Text = "5. Bant (Tolerans)";
 		lbl4.Font = new Font("Arial", 12);
 		
 		cmb1.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
@@ -99,6 +105,13 @@ partial class ResistorCalculate
 			cmb2.Items.Add(colors[i]);
 		cmb2.SelectedIndex = 0;
 		cmb2.SelectedIndexChanged += new EventHandler(OnSelectedIndexChanged);
+		
+		cmb5.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
+		cmb5.DropDownStyle = ComboBoxStyle.DropDownList;
+		for(int i = 0; i < colors.Length; i++)
+			cmb5.Items.Add(colors[i]);
+		cmb5.SelectedIndex = 0;
+		cmb5.SelectedIndexChanged += new EventHandler(OnSelectedIndexChanged);
 		
 		cmb3.Anchor = (AnchorStyles.Left | AnchorStyles.Right);
 		cmb3.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -117,16 +130,18 @@ partial class ResistorCalculate
 		lytPnlColor.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left) | AnchorStyles.Right);
 		lytPnlColor.Dock = DockStyle.Fill;
 		lytPnlColor.ColumnCount = 2;
-		lytPnlColor.RowCount = 5;
+		lytPnlColor.RowCount = 7;
 		lytPnlColor.AutoSize = true;
-		lytPnlColor.Controls.Add(lbl1, 0, 0);
-		lytPnlColor.Controls.Add(cmb1, 0, 1);
-		lytPnlColor.Controls.Add(lbl2, 1, 0);
-		lytPnlColor.Controls.Add(cmb2, 1, 1);
-		lytPnlColor.Controls.Add(lbl3, 0, 2);
-		lytPnlColor.Controls.Add(cmb3, 0, 3);
-		lytPnlColor.Controls.Add(lbl4, 1, 2);
-		lytPnlColor.Controls.Add(cmb4, 1, 3);
+		lytPnlColor.Controls.Add(lbl1, 0, 0); // 1. Band
+		lytPnlColor.Controls.Add(cmb1, 0, 1); // 1. Band
+		lytPnlColor.Controls.Add(lbl2, 1, 0); // 2. Band
+		lytPnlColor.Controls.Add(cmb2, 1, 1); // 2. Band
+		lytPnlColor.Controls.Add(lbl14, 0, 2); // 3. Band
+		lytPnlColor.Controls.Add(cmb5, 0, 3);  // 3. Band
+		lytPnlColor.Controls.Add(lbl3, 1, 2);  // 4. Band (Multiplier)
+		lytPnlColor.Controls.Add(cmb3, 1, 3);  // 4. Band (Multiplier)
+		lytPnlColor.Controls.Add(lbl4, 0, 4); // 5. Band (Tolerans)
+		lytPnlColor.Controls.Add(cmb4, 0, 5); // 5. Band (Tolerans)
 		lytPnlColor.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50f));
 		lytPnlColor.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50f));
 		grp1.Controls.Add(lytPnlColor);
@@ -243,7 +258,7 @@ partial class ResistorCalculate
 		lytPnlMaster.ColumnCount = 2;
 		lytPnlMaster.RowCount = 2;
 		lytPnlMaster.AutoSize = true;
-		lytPnlMaster.Padding = new Padding(5);
+		// lytPnlMaster.Padding = new Padding(5);
 		lytPnlMaster.Controls.Add(img, 0, 0);
 		lytPnlMaster.Controls.Add(grp1, 0, 1);
 		lytPnlMaster.Controls.Add(grp2, 1, 0);
@@ -252,7 +267,8 @@ partial class ResistorCalculate
 		lytPnlMaster.SetRowSpan(grp2, 2);
 		this.Controls.Add(lytPnlMaster);
 		
-		this.Size = new Size(700, 400);
-		this.Text = "Resistor Calculate";
+		// this.Size = new Size(700, 400);
+		// this.Text = "Resistor Calculate";
+		this.Text = "5 Band Resistor";
 	}
 }

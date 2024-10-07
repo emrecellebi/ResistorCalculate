@@ -8,6 +8,6 @@ public class Program
 	{
 		Application.EnableVisualStyles();
 		Application.SetCompatibleTextRenderingDefault(false);
-		Application.Run(new ResistorCalculate());
+		Application.Run(new MainForm());
 	}
 }
